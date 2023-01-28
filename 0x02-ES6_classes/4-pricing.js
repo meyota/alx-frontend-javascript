@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+// eslint-disable-next-line no-unused-vars
 import Currency from './3-currency.js';
 
 export default class Pricing {
@@ -36,7 +38,6 @@ export default class Pricing {
     }
     this._currency = currency;
   }
-
 
   displayFullPrice(Currency) {
     return `${this._amount} ${this._currency.displayFullCurrency()}`;
