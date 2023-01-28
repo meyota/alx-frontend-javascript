@@ -1,54 +1,49 @@
-/* eslint-disable import/extensions */
-// eslint-disable-next-line no-unused-vars
-import Currency from './3-currency.js';
+import Currency from './3-currency';
 
 export default class Pricing {
   constructor(amount, currency) {
-    if (typeof amount !== 'number') {
-      throw new Error('amount must be a number');
-    }
-    this._amount = amount;
-
-    if (typeof currency !== 'object') {
-      throw new Error('currency must be a object');
-    }
-    this._currency = currency;
+    this.amount = amount;
+    this.currency = currency;
   }
-
-  // Getter and Setter
 
   get amount() {
     return this._amount;
   }
 
-  set amount(amount) {
-    if (typeof amount !== 'number') {
-      throw new Error('amount must be a number');
+  set amount(value) {
+    if (typeof value !== 'number') {
+      throw new TypeError('amount must be a number');
     }
-    this._amount = amount;
+    this._amount = value;
   }
 
+  /**
+   * @returns {Currency}
+   */
   get currency() {
     return this._currency;
   }
 
-  set currency(currency) {
-    if (typeof currency !== 'object') {
-      throw new Error('amount must be a number');
+  /**
+   * @param {Currency} value
+   */
+  set currency(value) {
+    if (!(value instanceof Currency)) {
+      throw new TypeError('currency must be a Currency');
     }
-    this._currency = currency;
+    this._currency = value;
   }
 
-  displayFullPrice(Currency) {
-    return `${this._amount} ${this._currency.displayFullCurrency()}`;
+  displayFullPrice() {
+    return `${this.amount} ${this.currency.name} (${this.currency.code})`;
   }
 
   static convertPrice(amount, conversionRate) {
     if (typeof amount !== 'number') {
-      throw new Error('amount must be a number');
+      throw new TypeError('amount must be a number');
     }
     if (typeof conversionRate !== 'number') {
-      throw new Error('conversionRate must be a number');
+      throw new TypeError('conversionRate must be a number');
     }
     return amount * conversionRate;
   }
