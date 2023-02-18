@@ -67,3 +67,17 @@ function executeWork (employee: DirectorInterface | TeacherInterface) {
 
 executeWork(createEmployee(200));
 executeWork(createEmployee(1000));
+
+// -------------- Task 7 ------------
+
+type Subjects = 'Math' | 'History';
+function teachClass(todayClass: Subjects): void {
+  if (todayClass === 'Math') {
+    console.log('Teaching Math');
+  } else {
+    console.log('Teaching History');
+  }
+}
+
+teachClass('Math');
+teachClass('History');
